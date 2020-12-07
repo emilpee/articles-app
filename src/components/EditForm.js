@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
@@ -40,7 +40,8 @@ const NewArticlePage = (props) => {
                             <input defaultValue={description} type="text" name="description" ref={register} />
                         </div>
                         <div className="form-control">
-                            <label>Author</label> <br />
+                            <label>Author</label>
+                            <br />
                             <input defaultValue={author} type="text" name="author" ref={register} />
                         </div>
                         <div className="form-control">
@@ -55,7 +56,7 @@ const NewArticlePage = (props) => {
                             />
                         </div>
                         <div className="form-control">
-                            <label></label>
+                            <label></label> <br />
                             <button type="submit">Submit</button>
                         </div>
                     </form>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { Card, Typography, CardContent, Button } from '@material-ui/core'
+import { Card, Typography, CardContent, Button, Container, ButtonGroup } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import EditForm from '../components/EditForm'
 import axios from 'axios'
 
 const useStyles = makeStyles({
     root: {
+        marginTop: 16,
         minWidth: 275,
     },
     title: {
@@ -56,7 +57,7 @@ const EditArticleView = () => {
     const classes = useStyles()
 
     return (
-        <div>
+        <Container>
             {article !== null ? (
                 <Card className={classes.root} variant="outlined" key={article._id}>
                     <CardContent>
@@ -69,18 +70,20 @@ const EditArticleView = () => {
                         <Typography>Author: {article.author}</Typography>
                         <Typography>{article.body}</Typography>
                     </CardContent>
-                    <Button onClick={handleShowEditForm} variant="contained" color="primary">
-                        Edit
-                    </Button>
-                    <Button onClick={deleteArticle} variant="contained" color="secondary">
-                        Delete
-                    </Button>
+                    <ButtonGroup style={{ margin: 8 }}>
+                        <Button onClick={handleShowEditForm} variant="contained" color="primary">
+                            Edit
+                        </Button>
+                        <Button onClick={deleteArticle} variant="contained" color="secondary">
+                            Delete
+                        </Button>
+                    </ButtonGroup>
                     {showEditForm ? <EditForm article={article} showEditForm={showEditForm} /> : null}
                 </Card>
             ) : (
                 <p>Loading...</p>
             )}
-        </div>
+        </Container>
     )
 }
 

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
+        marginTop: 16,
     },
     title: {
         fontSize: 24,
@@ -29,7 +30,6 @@ const MainPage = (props) => {
     }
 
     useEffect(() => {
-        console.log(articles)
         if (articles.length === 0) {
             fetchArticles()
         }
@@ -48,8 +48,8 @@ const MainPage = (props) => {
             <AddForm showCreatePage={showCreatePage} />
             {articles.length > 0 ? (
                 articles.map((article) => (
-                    <Link to={{ pathname: `/articles/${article._id}`, state: 'Hello' }}>
-                        <Card className={classes.root} variant="outlined" key={article._id}>
+                    <Card key={article._id} className={classes.root} variant="outlined">
+                        <Link style={{ textDecoration: 'none' }} to={{ pathname: `/articles/${article._id}` }}>
                             <CardContent>
                                 <Typography variant="h2" className={classes.title} color="textSecondary">
                                     {article.title}
@@ -59,8 +59,8 @@ const MainPage = (props) => {
                                 </Typography>
                                 <Typography>Author: {article.author}</Typography>
                             </CardContent>
-                        </Card>
-                    </Link>
+                        </Link>
+                    </Card>
                 ))
             ) : (
                 <p>Loading...</p>

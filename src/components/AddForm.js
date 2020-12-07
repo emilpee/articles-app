@@ -8,14 +8,8 @@ const NewArticlePage = (props) => {
 
     const postNewArticle = async (data) => {
         try {
-            console.log(data)
             await axios
-                .post('http://ec2-3-249-202-253.eu-west-1.compute.amazonaws.com/', {
-                    body: data,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
+                .post('http://ec2-3-249-202-253.eu-west-1.compute.amazonaws.com/articles', data)
                 .then((results) => {
                     console.log(results)
                 })
@@ -48,6 +42,7 @@ const NewArticlePage = (props) => {
                         </div>
                         <div className="form-control">
                             <label></label>
+                            <br />
                             <button type="submit">Submit</button>
                         </div>
                     </form>
